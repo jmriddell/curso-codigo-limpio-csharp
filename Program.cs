@@ -13,18 +13,18 @@ namespace ToDo
             int selectedOption = 0;
             do
             {
-                selectedOption = ShowMainMenu();
+                selectedOption = ShowMenuMain();
                 if (selectedOption == 1)
                 {
                     ShowMenuAdd();
                 }
                 else if (selectedOption == 2)
                 {
-                    ShowMenuDos();
+                    ShowMenuRemove();
                 }
                 else if (selectedOption == 3)
                 {
-                    ShowMenuTres();
+                    ShowMenuTaskList();
                 }
             } while (selectedOption != 4);
         }
@@ -32,7 +32,7 @@ namespace ToDo
         /// Show the main menu 
         /// </summary>
         /// <returns>Returns option indicated by user</returns>
-        public static int ShowMainMenu()
+        public static int ShowMenuMain()
         {
             Console.WriteLine("----------------------------------------");
             Console.WriteLine("Ingrese la opción a realizar: ");
@@ -46,7 +46,7 @@ namespace ToDo
             return Convert.ToInt32(line);
         }
 
-        public static void ShowMenuDos()
+        public static void ShowMenuRemove()
         {
             try
             {
@@ -90,7 +90,7 @@ namespace ToDo
             }
         }
 
-        public static void ShowMenuTres()
+        public static void ShowMenuTaskList()
         {
             if (TL == null || TL.Count == 0)
             {
