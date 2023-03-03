@@ -58,7 +58,7 @@ namespace ToDo
                 // Show current taks
                 for (int i = 0; i < taskList.Count; i++)
                 {
-                    Console.WriteLine((i + 1) + ". " + taskList[i]);
+                    Console.WriteLine($"{(i + 1)}. {taskList[i]}");
                 }
                 PrintSeparator();
 
@@ -71,7 +71,7 @@ namespace ToDo
                     {
                         string task = taskList[indexToRemove];
                         taskList.RemoveAt(indexToRemove);
-                        Console.WriteLine("Tarea " + task + " eliminada");
+                        Console.WriteLine($"Tarea {task} eliminada");
                     }
                 }
             }
@@ -105,7 +105,7 @@ namespace ToDo
                 PrintSeparator();
                 for (int i = 0; i < taskList.Count; i++)
                 {
-                    Console.WriteLine((i + 1) + ". " + taskList[i]);
+                    Console.WriteLine($"{(i + 1)}. {taskList[i]}");
                 }
                 PrintSeparator();
             }
