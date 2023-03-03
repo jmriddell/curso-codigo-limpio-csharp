@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ToDo
 {
@@ -106,15 +107,24 @@ namespace ToDo
 
         private static void ShowTaskList()
         {
-            for (int i = 0; i < taskList.Count; i++)
+            foreach (var (task, i) in taskList.WithIndex())
             {
-                Console.WriteLine($"{(i + 1)}. {taskList[i]}");
+                Console.WriteLine($"{(i + 1)}. {task}");
             }
         }
 
         private static void PrintSeparator()
         {
             Console.WriteLine("----------------------------------------");
+        }
+
+    }
+
+    public static class CustomExtensions
+    {
+        public static IEnumerable<(T item, int index)> WithIndex<T>(this IEnumerable<T> source)
+        {
+            return source.Select((item, index) => (item, index));
         }
     }
 }
