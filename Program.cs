@@ -101,7 +101,7 @@ namespace ToDo
         {
             foreach (var (task, i) in taskList.WithIndex())
             {
-                Console.WriteLine($"{(i + 1)}. {task}");
+                Console.WriteLine($"{i + 1}. {task}");
             }
         }
 
