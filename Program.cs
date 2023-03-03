@@ -10,34 +10,14 @@ namespace ToDo
 
         static void Main(string[] args)
         {
-            while (true)
-            {
-                int selectedOption = ShowMenuMain();
-                switch (selectedOption)
-                {
-                    case 1:
-                        ShowMenuAdd();
-                        break;
-                    case 2:
-                        ShowMenuRemove();
-                        break;
-                    case 3:
-                        ShowMenuTaskList();
-                        break;
-                    case 4:
-                        // Exit
-                        return;
-                    default:
-                        break;
-                }
-            }
+            while (ShowMenuMain()) ;
         }
 
         /// <summary>
         /// Show the main menu
         /// </summary>
         /// <returns>Returns option indicated by user</returns>
-        public static int ShowMenuMain()
+        public static bool ShowMenuMain()
         {
             PrintSeparator();
             Console.WriteLine("Ingrese la opción a realizar: ");
@@ -47,8 +27,26 @@ namespace ToDo
             Console.WriteLine("4. Salir");
 
             // Read line
-            string line = Console.ReadLine();
-            return Convert.ToInt32(line);
+            int selectedOption = Convert.ToInt32(Console.ReadLine());
+
+            switch (selectedOption)
+            {
+                case 1:
+                    ShowMenuAdd();
+                    break;
+                case 2:
+                    ShowMenuRemove();
+                    break;
+                case 3:
+                    ShowMenuTaskList();
+                    break;
+                case 4:
+                    // Exit
+                    return false;
+                default:
+                    break;
+            }
+            return true;
         }
 
         public static void ShowMenuRemove()
