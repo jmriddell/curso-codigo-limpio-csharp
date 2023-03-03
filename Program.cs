@@ -81,13 +81,11 @@ namespace ToDo
             if (taskList.Count == 0)
             {
                 Console.WriteLine("No hay tareas por realizar");
+                return;
             }
-            else
-            {
-                PrintSeparator();
-                ShowTaskList();
-                PrintSeparator();
-            }
+            PrintSeparator();
+            ShowTaskList();
+            PrintSeparator();
         }
 
         private static void ShowTaskList()
