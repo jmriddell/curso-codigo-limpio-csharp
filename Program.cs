@@ -14,17 +14,19 @@ namespace ToDo
             do
             {
                 selectedOption = ShowMenuMain();
-                if (selectedOption == 1)
+                switch (selectedOption)
                 {
-                    ShowMenuAdd();
-                }
-                else if (selectedOption == 2)
-                {
-                    ShowMenuRemove();
-                }
-                else if (selectedOption == 3)
-                {
-                    ShowMenuTaskList();
+                    case 1:
+                        ShowMenuAdd();
+                        break;
+                    case 2:
+                        ShowMenuRemove();
+                        break;
+                    case 3:
+                        ShowMenuTaskList();
+                        break;
+                    default:
+                        break;
                 }
             } while (selectedOption != 4);
         }
