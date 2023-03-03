@@ -29,7 +29,7 @@ namespace ToDo
             } while (selectedOption != 4);
         }
         /// <summary>
-        /// Show the main menu 
+        /// Show the main menu
         /// </summary>
         /// <returns>Returns option indicated by user</returns>
         public static int ShowMenuMain()
