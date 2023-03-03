@@ -51,7 +51,7 @@ namespace ToDo
 
         public static void ShowMenuRemove()
         {
-            static void RemoveItem(int index)
+            static void RemoveItemFromTaskList(int index)
             {
                 if (index < 0 || taskList.Count <= index)
                 {
@@ -70,7 +70,7 @@ namespace ToDo
             if (!int.TryParse(line, out int selectedInt)) return;
             int indexToRemove = selectedInt - 1;
 
-            RemoveItem(indexToRemove);
+            RemoveItemFromTaskList(indexToRemove);
         }
 
         public static void ShowMenuAdd()
