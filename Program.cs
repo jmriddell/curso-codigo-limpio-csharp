@@ -26,6 +26,7 @@ namespace ToDo
                         ShowMenuTaskList();
                         break;
                     case 4:
+                        // Exit
                         return;
                     default:
                         break;
