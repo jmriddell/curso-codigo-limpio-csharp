@@ -62,15 +62,7 @@ namespace ToDo
                 string line = Console.ReadLine();
                 // Remove one position
                 int indexToRemove = Convert.ToInt32(line) - 1;
-                if (indexToRemove > -1)
-                {
-                    if (taskList.Count > 0)
-                    {
-                        string task = taskList[indexToRemove];
-                        taskList.RemoveAt(indexToRemove);
-                        Console.WriteLine($"Tarea {task} eliminada");
-                    }
-                }
+                RemoveItem(indexToRemove);
             }
             catch (Exception)
             {
@@ -118,6 +110,18 @@ namespace ToDo
             Console.WriteLine("----------------------------------------");
         }
 
+        private static void RemoveItem(int index)
+        {
+            if (index > -1)
+            {
+                if (taskList.Count > 0)
+                {
+                    string task = taskList[index];
+                    taskList.RemoveAt(index);
+                    Console.WriteLine($"Tarea {task} eliminada");
+                }
+            }
+        }
     }
 
     public static class CustomExtensions
