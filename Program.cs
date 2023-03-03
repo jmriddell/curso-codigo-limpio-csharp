@@ -34,7 +34,7 @@ namespace ToDo
         /// <returns>Returns option indicated by user</returns>
         public static int ShowMenuMain()
         {
-            Console.WriteLine("----------------------------------------");
+            PrintSeparator();
             Console.WriteLine("Ingrese la opción a realizar: ");
             Console.WriteLine("1. Nueva tarea");
             Console.WriteLine("2. Remover tarea");
@@ -56,7 +56,7 @@ namespace ToDo
                 {
                     Console.WriteLine((i + 1) + ". " + TL[i]);
                 }
-                Console.WriteLine("----------------------------------------");
+                PrintSeparator();
 
                 string line = Console.ReadLine();
                 // Remove one position
@@ -98,13 +98,18 @@ namespace ToDo
             }
             else
             {
-                Console.WriteLine("----------------------------------------");
+                PrintSeparator();
                 for (int i = 0; i < TL.Count; i++)
                 {
                     Console.WriteLine((i + 1) + ". " + TL[i]);
                 }
-                Console.WriteLine("----------------------------------------");
+                PrintSeparator();
             }
+        }
+
+        private static void PrintSeparator()
+        {
+            Console.WriteLine("----------------------------------------");
         }
     }
 }
