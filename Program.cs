@@ -16,7 +16,7 @@ namespace ToDo
         /// <summary>
         /// Show the main menu
         /// </summary>
-        /// <returns>Returns option indicated by user</returns>
+        /// <returns>Returns wether the user has not chose to exit</returns>
         public static bool ShowMenuMain()
         {
             PrintSeparator();
