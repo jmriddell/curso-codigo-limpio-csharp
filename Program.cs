@@ -112,15 +112,13 @@ namespace ToDo
 
         private static void RemoveItem(int index)
         {
-            if (index > -1)
+            if (index <= -1 || taskList.Count <= 0)
             {
-                if (taskList.Count > 0)
-                {
-                    string task = taskList[index];
-                    taskList.RemoveAt(index);
-                    Console.WriteLine($"Tarea {task} eliminada");
-                }
+                return;
             }
+            string task = taskList[index];
+            taskList.RemoveAt(index);
+            Console.WriteLine($"Tarea {task} eliminada");
         }
     }
 
