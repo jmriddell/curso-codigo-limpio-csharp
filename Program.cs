@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace ToDo
@@ -95,7 +95,7 @@ namespace ToDo
             if (TL == null || TL.Count == 0)
             {
                 Console.WriteLine("No hay tareas por realizar");
-            } 
+            }
             else
             {
                 Console.WriteLine("----------------------------------------");
