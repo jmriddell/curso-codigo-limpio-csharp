@@ -92,7 +92,7 @@ namespace ToDo
 
         public static void ShowMenuTaskList()
         {
-            if (taskList == null || taskList.Count == 0)
+            if (taskList.Count == 0)
             {
                 Console.WriteLine("No hay tareas por realizar");
             }
