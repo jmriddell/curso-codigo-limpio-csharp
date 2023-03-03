@@ -51,20 +51,15 @@ namespace ToDo
 
         public static void ShowMenuRemove()
         {
-            try
-            {
-                Console.WriteLine("Ingrese el número de la tarea a remover: ");
-                ShowTaskList();
-                PrintSeparator();
+            Console.WriteLine("Ingrese el número de la tarea a remover: ");
+            ShowTaskList();
+            PrintSeparator();
 
-                string line = Console.ReadLine();
-                // Remove one position
-                int indexToRemove = Convert.ToInt32(line) - 1;
-                RemoveItem(indexToRemove);
-            }
-            catch (Exception)
-            {
-            }
+            string line = Console.ReadLine();
+            if (!int.TryParse(line, out int selectedInt)) return;
+            // Remove one position
+            int indexToRemove = selectedInt - 1;
+            RemoveItem(indexToRemove);
         }
 
         public static void ShowMenuAdd()
@@ -110,7 +105,7 @@ namespace ToDo
 
         private static void RemoveItem(int index)
         {
-            if (index <= -1 || taskList.Count <= 0)
+            if (index <= -1 || taskList.Count <= index)
             {
                 return;
             }
