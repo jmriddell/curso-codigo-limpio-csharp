@@ -51,6 +51,17 @@ namespace ToDo
 
         public static void ShowMenuRemove()
         {
+            static void RemoveItem(int index)
+            {
+                if (index < 0 || taskList.Count <= index)
+                {
+                    return;
+                }
+                string task = taskList[index];
+                taskList.RemoveAt(index);
+                Console.WriteLine($"Tarea {task} eliminada");
+            }
+
             Console.WriteLine("Ingrese el número de la tarea a remover: ");
             ShowTaskList();
             PrintSeparator();
@@ -97,17 +108,6 @@ namespace ToDo
         }
 
         private static void PrintSeparator() => Console.WriteLine("----------------------------------------");
-
-        private static void RemoveItem(int index)
-        {
-            if (index < 0 || taskList.Count <= index)
-            {
-                return;
-            }
-            string task = taskList[index];
-            taskList.RemoveAt(index);
-            Console.WriteLine($"Tarea {task} eliminada");
-        }
     }
 
     public enum Menu
