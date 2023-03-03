@@ -10,10 +10,9 @@ namespace ToDo
         static void Main(string[] args)
         {
             taskList = new List<string>();
-            int selectedOption = 0;
             while (true)
             {
-                selectedOption = ShowMenuMain();
+                int selectedOption = ShowMenuMain();
                 switch (selectedOption)
                 {
                     case 1:
