@@ -11,7 +11,7 @@ namespace ToDo
         {
             taskList = new List<string>();
             int selectedOption = 0;
-            do
+            while (true)
             {
                 selectedOption = ShowMenuMain();
                 switch (selectedOption)
@@ -25,10 +25,12 @@ namespace ToDo
                     case 3:
                         ShowMenuTaskList();
                         break;
+                    case 4:
+                        return;
                     default:
                         break;
                 }
-            } while (selectedOption != 4);
+            }
         }
         /// <summary>
         /// Show the main menu
