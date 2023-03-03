@@ -105,7 +105,7 @@ namespace ToDo
 
         private static void RemoveItem(int index)
         {
-            if (index <= -1 || taskList.Count <= index)
+            if (index < 0 || taskList.Count <= index)
             {
                 return;
             }
