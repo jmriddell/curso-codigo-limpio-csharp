@@ -21,26 +21,26 @@ namespace ToDo
         {
             PrintSeparator();
             Console.WriteLine("Ingrese la opción a realizar: ");
-            Console.WriteLine("1. Nueva tarea");
-            Console.WriteLine("2. Remover tarea");
-            Console.WriteLine("3. Tareas pendientes");
-            Console.WriteLine("4. Salir");
+            Console.WriteLine($"{(int)Menu.Add}. Nueva tarea");
+            Console.WriteLine($"{(int)Menu.Remove}. Remover tarea");
+            Console.WriteLine($"{(int)Menu.TaskList}. Tareas pendientes");
+            Console.WriteLine($"{(int)Menu.Exit}. Salir");
 
             // Read line
-            int selectedOption = Convert.ToInt32(Console.ReadLine());
+            Menu selectedOption = (Menu)Convert.ToInt32(Console.ReadLine());
 
             switch (selectedOption)
             {
-                case 1:
+                case Menu.Add:
                     ShowMenuAdd();
                     break;
-                case 2:
+                case Menu.Remove:
                     ShowMenuRemove();
                     break;
-                case 3:
+                case Menu.TaskList:
                     ShowMenuTaskList();
                     break;
-                case 4:
+                case Menu.Exit:
                     // Exit
                     return false;
                 default:
@@ -118,6 +118,14 @@ namespace ToDo
             taskList.RemoveAt(index);
             Console.WriteLine($"Tarea {task} eliminada");
         }
+    }
+
+    public enum Menu
+    {
+        Add = 1,
+        Remove = 2,
+        TaskList = 3,
+        Exit = 4
     }
 
     public static class CustomExtensions
