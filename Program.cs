@@ -96,10 +96,7 @@ namespace ToDo
             }
         }
 
-        private static void PrintSeparator()
-        {
-            Console.WriteLine("----------------------------------------");
-        }
+        private static void PrintSeparator() => Console.WriteLine("----------------------------------------");
 
         private static void RemoveItem(int index)
         {
