@@ -57,8 +57,8 @@ namespace ToDo
 
             string line = Console.ReadLine();
             if (!int.TryParse(line, out int selectedInt)) return;
-            // Remove one position
             int indexToRemove = selectedInt - 1;
+
             RemoveItem(indexToRemove);
         }
 
