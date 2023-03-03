@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace ToDo
@@ -10,23 +10,23 @@ namespace ToDo
         static void Main(string[] args)
         {
             TL = new List<string>();
-            int variable = 0;
+            int selectedOption = 0;
             do
             {
-                variable = ShowMainMenu();
-                if (variable == 1)
+                selectedOption = ShowMainMenu();
+                if (selectedOption == 1)
                 {
                     ShowMenuAdd();
                 }
-                else if (variable == 2)
+                else if (selectedOption == 2)
                 {
                     ShowMenuDos();
                 }
-                else if (variable == 3)
+                else if (selectedOption == 3)
                 {
                     ShowMenuTres();
                 }
-            } while (variable != 4);
+            } while (selectedOption != 4);
         }
         /// <summary>
         /// Show the main menu 
