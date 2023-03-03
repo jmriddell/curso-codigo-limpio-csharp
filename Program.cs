@@ -29,24 +29,15 @@ namespace ToDo
             // Read line
             Menu selectedOption = (Menu)Convert.ToInt32(Console.ReadLine());
 
-            switch (selectedOption)
+            static bool RunAndTrue(Action func) { func(); return true; }
+            return (selectedOption) switch
             {
-                case Menu.Add:
-                    ShowMenuAdd();
-                    break;
-                case Menu.Remove:
-                    ShowMenuRemove();
-                    break;
-                case Menu.TaskList:
-                    ShowMenuTaskList();
-                    break;
-                case Menu.Exit:
-                    // Exit
-                    return false;
-                default:
-                    break;
-            }
-            return true;
+                (Menu.Add) => RunAndTrue(ShowMenuAdd),
+                (Menu.Remove) => RunAndTrue(ShowMenuRemove),
+                (Menu.TaskList) => RunAndTrue(ShowMenuTaskList),
+                (Menu.Exit) => false,
+                _ => true
+            };
         }
 
         public static void ShowMenuRemove()
