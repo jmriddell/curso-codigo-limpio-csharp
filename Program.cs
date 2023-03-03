@@ -5,11 +5,10 @@ namespace ToDo
 {
     internal class Program
     {
-        public static List<string> taskList { get; set; }
+        public static List<string> taskList = new List<string>();
 
         static void Main(string[] args)
         {
-            taskList = new List<string>();
             while (true)
             {
                 int selectedOption = ShowMenuMain();
