@@ -1,4 +1,4 @@
-﻿List<string> taskList = new List<string>();
+List<string> taskList = new List<string>();
 
 
 // Main code
@@ -24,7 +24,6 @@ bool ShowMenuMain()
     Console.WriteLine($"{(int)Menu.TaskList}. Tareas pendientes");
     Console.WriteLine($"{(int)Menu.Exit}. Salir");
 
-    // Read line
     Menu selectedOption = (Menu)Convert.ToInt32(Console.ReadLine());
 
     static bool RunAndTrue(Action func) { func(); return true; }
