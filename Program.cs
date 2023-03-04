@@ -15,11 +15,7 @@ while (MenuMain()) ;
 bool MenuMain()
 {
     PrintSeparator();
-    Console.WriteLine("Ingrese la opción a realizar: ");
-    Console.WriteLine($"{(int)Menu.Add}. Nueva tarea");
-    Console.WriteLine($"{(int)Menu.Remove}. Remover tarea");
-    Console.WriteLine($"{(int)Menu.TaskList}. Tareas pendientes");
-    Console.WriteLine($"{(int)Menu.Exit}. Salir");
+    PrintMainMenuOptions();
 
     Menu? selectedOption = (Menu?)ReadIntSafely();
 
@@ -96,6 +92,15 @@ void ShowTaskList()
     {
         Console.WriteLine($"{i + 1}. {task}");
     }
+}
+
+void PrintMainMenuOptions()
+{
+    Console.WriteLine("Ingrese la opción a realizar: ");
+    Console.WriteLine($"{(int)Menu.Add}. Nueva tarea");
+    Console.WriteLine($"{(int)Menu.Remove}. Remover tarea");
+    Console.WriteLine($"{(int)Menu.TaskList}. Tareas pendientes");
+    Console.WriteLine($"{(int)Menu.Exit}. Salir");
 }
 
 void PrintSeparator() => Console.WriteLine("----------------------------------------");
