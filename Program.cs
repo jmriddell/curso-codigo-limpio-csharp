@@ -17,15 +17,15 @@ bool MenuMain()
     PrintSeparator();
     PrintMainMenuOptions();
 
-    Menu? selectedOption = (Menu?)ReadIntSafely();
+    MenuOption? selectedOption = (MenuOption?)ReadIntSafely();
 
     static bool RunAndTrue(Action func) { func(); return true; }
     return (selectedOption) switch
     {
-        (Menu.Add) => RunAndTrue(MenuAdd),
-        (Menu.Remove) => RunAndTrue(MenuRemove),
-        (Menu.TaskList) => RunAndTrue(MenuTaskList),
-        (Menu.Exit) => false,
+        (MenuOption.Add) => RunAndTrue(MenuAdd),
+        (MenuOption.Remove) => RunAndTrue(MenuRemove),
+        (MenuOption.TaskList) => RunAndTrue(MenuTaskList),
+        (MenuOption.Exit) => false,
         _ => true
     };
 }
@@ -97,17 +97,17 @@ void ShowTaskList()
 void PrintMainMenuOptions()
 {
     Console.WriteLine("Ingrese la opción a realizar: ");
-    Console.WriteLine($"{(int)Menu.Add}. Nueva tarea");
-    Console.WriteLine($"{(int)Menu.Remove}. Remover tarea");
-    Console.WriteLine($"{(int)Menu.TaskList}. Tareas pendientes");
-    Console.WriteLine($"{(int)Menu.Exit}. Salir");
+    Console.WriteLine($"{(int)MenuOption.Add}. Nueva tarea");
+    Console.WriteLine($"{(int)MenuOption.Remove}. Remover tarea");
+    Console.WriteLine($"{(int)MenuOption.TaskList}. Tareas pendientes");
+    Console.WriteLine($"{(int)MenuOption.Exit}. Salir");
 }
 
 void PrintSeparator() => Console.WriteLine("----------------------------------------");
 
 // -------------------------- Enums --------------------------
 
-enum Menu
+enum MenuOption
 {
     Add = 1,
     Remove = 2,
