@@ -6,10 +6,7 @@ while (ShowMenuMain()) ;
 
 // -------------------------- Functions --------------------------
 
-IEnumerable<(T item, int index)> WithIndex<T>(IEnumerable<T> source)
-{
-    return source.Select((item, index) => (item, index));
-}
+// -------------------------- Menus --------------------------
 
 /// <summary>
 /// Show the main menu
@@ -35,17 +32,6 @@ bool ShowMenuMain()
         (Menu.Exit) => false,
         _ => true
     };
-}
-
-void RemoveItemFromTaskList(int index)
-{
-    if (index < 0 || taskList.Count <= index)
-    {
-        return;
-    }
-    string task = taskList[index];
-    taskList.RemoveAt(index);
-    Console.WriteLine($"Tarea {task} eliminada");
 }
 
 void ShowMenuRemove()
@@ -81,6 +67,24 @@ void ShowMenuTaskList()
     PrintSeparator();
 }
 
+// -------------------------- Helpers --------------------------
+
+IEnumerable<(T item, int index)> WithIndex<T>(IEnumerable<T> source)
+{
+    return source.Select((item, index) => (item, index));
+}
+
+void RemoveItemFromTaskList(int index)
+{
+    if (index < 0 || taskList.Count <= index)
+    {
+        return;
+    }
+    string task = taskList[index];
+    taskList.RemoveAt(index);
+    Console.WriteLine($"Tarea {task} eliminada");
+}
+
 int? ReadIntSafely()
 {
     return int.TryParse(Console.ReadLine(), out int selectedInt) ? selectedInt : null;
@@ -95,6 +99,8 @@ void ShowTaskList()
 }
 
 void PrintSeparator() => Console.WriteLine("----------------------------------------");
+
+// -------------------------- Enums --------------------------
 
 enum Menu
 {
