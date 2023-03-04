@@ -24,7 +24,7 @@ bool ShowMenuMain()
     Console.WriteLine($"{(int)Menu.TaskList}. Tareas pendientes");
     Console.WriteLine($"{(int)Menu.Exit}. Salir");
 
-    Menu selectedOption = (Menu)Convert.ToInt32(Console.ReadLine());
+    Menu? selectedOption = (Menu?)ReadIntSafely();
 
     static bool RunAndTrue(Action func) { func(); return true; }
     return (selectedOption) switch
