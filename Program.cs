@@ -2,7 +2,7 @@
 
 
 // Main code
-while (ShowMenuMain()) ;
+while (MenuMain()) ;
 
 // -------------------------- Functions --------------------------
 
@@ -12,7 +12,7 @@ while (ShowMenuMain()) ;
 /// Show the main menu
 /// </summary>
 /// <returns>Returns wether the user has not chose to exit</returns>
-bool ShowMenuMain()
+bool MenuMain()
 {
     PrintSeparator();
     Console.WriteLine("Ingrese la opción a realizar: ");
@@ -26,15 +26,15 @@ bool ShowMenuMain()
     static bool RunAndTrue(Action func) { func(); return true; }
     return (selectedOption) switch
     {
-        (Menu.Add) => RunAndTrue(ShowMenuAdd),
-        (Menu.Remove) => RunAndTrue(ShowMenuRemove),
-        (Menu.TaskList) => RunAndTrue(ShowMenuTaskList),
+        (Menu.Add) => RunAndTrue(MenuAdd),
+        (Menu.Remove) => RunAndTrue(MenuRemove),
+        (Menu.TaskList) => RunAndTrue(MenuTaskList),
         (Menu.Exit) => false,
         _ => true
     };
 }
 
-void ShowMenuRemove()
+void MenuRemove()
 {
     Console.WriteLine("Ingrese el número de la tarea a remover: ");
     ShowTaskList();
@@ -47,7 +47,7 @@ void ShowMenuRemove()
     RemoveItemFromTaskList(indexToRemove);
 }
 
-void ShowMenuAdd()
+void MenuAdd()
 {
     Console.WriteLine("Ingrese el nombre de la tarea: ");
     string task = Console.ReadLine();
@@ -55,7 +55,7 @@ void ShowMenuAdd()
     Console.WriteLine("Tarea registrada");
 }
 
-void ShowMenuTaskList()
+void MenuTaskList()
 {
     if (taskList.Count == 0)
     {
