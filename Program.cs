@@ -1,4 +1,4 @@
-List<string> taskList = new List<string>();
+﻿List<string> taskList = new List<string>();
 
 
 // Main code
@@ -54,9 +54,9 @@ void ShowMenuRemove()
     ShowTaskList();
     PrintSeparator();
 
-    string line = Console.ReadLine();
-    if (!int.TryParse(line, out int selectedInt)) return;
-    int indexToRemove = selectedInt - 1;
+    int? selectedInt = ReadIntSafely();
+    if (selectedInt == null) return;
+    int indexToRemove = (int)selectedInt - 1;
 
     RemoveItemFromTaskList(indexToRemove);
 }
@@ -85,6 +85,11 @@ void ShowMenuTaskList()
     PrintSeparator();
     ShowTaskList();
     PrintSeparator();
+}
+
+int? ReadIntSafely()
+{
+    return int.TryParse(Console.ReadLine(), out int selectedInt) ? selectedInt : null;
 }
 
 void ShowTaskList()
