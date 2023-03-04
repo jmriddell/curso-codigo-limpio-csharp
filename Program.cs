@@ -19,12 +19,12 @@ bool MenuMain()
 
     MenuOption? selectedOption = (MenuOption?)ReadIntSafely();
 
-    static bool RunAndTrue(Action func) { func(); return true; }
+    static bool RunAndReturnTrue(Action func) { func(); return true; }
     return (selectedOption) switch
     {
-        (MenuOption.Add) => RunAndTrue(MenuAdd),
-        (MenuOption.Remove) => RunAndTrue(MenuRemove),
-        (MenuOption.TaskList) => RunAndTrue(MenuTaskList),
+        (MenuOption.Add) => RunAndReturnTrue(MenuAdd),
+        (MenuOption.Remove) => RunAndReturnTrue(MenuRemove),
+        (MenuOption.TaskList) => RunAndReturnTrue(MenuTaskList),
         (MenuOption.Exit) => false,
         _ => true
     };
