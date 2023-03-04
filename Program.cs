@@ -18,8 +18,6 @@ bool MenuMain()
     PrintMainMenuOptions();
 
     MenuOption? selectedOption = (MenuOption?)ReadIntSafely();
-
-    static bool RunAndReturnTrue(Action func) { func(); return true; }
     return (selectedOption) switch
     {
         (MenuOption.Add) => RunAndReturnTrue(MenuAdd),
@@ -69,6 +67,8 @@ IEnumerable<(T item, int index)> WithIndex<T>(IEnumerable<T> source)
 {
     return source.Select((item, index) => (item, index));
 }
+
+bool RunAndReturnTrue(Action func) { func(); return true; }
 
 void RemoveItemFromTaskList(int index)
 {
