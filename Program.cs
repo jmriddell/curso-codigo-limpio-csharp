@@ -35,7 +35,10 @@ void MenuRemove()
     PrintSeparator();
 
     int? selectedInt = ReadIntSafely();
-    if (selectedInt == null) return;
+    if (selectedInt == null)
+    {
+        return;
+    }
     int indexToRemove = (int)selectedInt - 1;
 
     RemoveItemFromTaskList(indexToRemove);
