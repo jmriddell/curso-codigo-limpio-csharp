@@ -63,16 +63,10 @@ void ShowMenuRemove()
 
 void ShowMenuAdd()
 {
-    try
-    {
-        Console.WriteLine("Ingrese el nombre de la tarea: ");
-        string task = Console.ReadLine();
-        taskList.Add(task);
-        Console.WriteLine("Tarea registrada");
-    }
-    catch (Exception)
-    {
-    }
+    Console.WriteLine("Ingrese el nombre de la tarea: ");
+    string task = Console.ReadLine();
+    taskList.Add(task);
+    Console.WriteLine("Tarea registrada");
 }
 
 void ShowMenuTaskList()
