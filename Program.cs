@@ -1,114 +1,107 @@
-﻿namespace ToDo;
+﻿List<string> taskList = new List<string>();
 
-internal class Program
+
+// Main code
+while (ShowMenuMain()) ;
+
+// -------------------------- Functions --------------------------
+
+IEnumerable<(T item, int index)> WithIndex<T>(IEnumerable<T> source)
 {
-    public static List<string> taskList = new List<string>();
-
-    static void Main(string[] args)
-    {
-        while (ShowMenuMain()) ;
-    }
-
-    /// <summary>
-    /// Show the main menu
-    /// </summary>
-    /// <returns>Returns wether the user has not chose to exit</returns>
-    public static bool ShowMenuMain()
-    {
-        PrintSeparator();
-        Console.WriteLine("Ingrese la opción a realizar: ");
-        Console.WriteLine($"{(int)Menu.Add}. Nueva tarea");
-        Console.WriteLine($"{(int)Menu.Remove}. Remover tarea");
-        Console.WriteLine($"{(int)Menu.TaskList}. Tareas pendientes");
-        Console.WriteLine($"{(int)Menu.Exit}. Salir");
-
-        // Read line
-        Menu selectedOption = (Menu)Convert.ToInt32(Console.ReadLine());
-
-        static bool RunAndTrue(Action func) { func(); return true; }
-        return (selectedOption) switch
-        {
-            (Menu.Add) => RunAndTrue(ShowMenuAdd),
-            (Menu.Remove) => RunAndTrue(ShowMenuRemove),
-            (Menu.TaskList) => RunAndTrue(ShowMenuTaskList),
-            (Menu.Exit) => false,
-            _ => true
-        };
-    }
-
-    public static void ShowMenuRemove()
-    {
-        static void RemoveItemFromTaskList(int index)
-        {
-            if (index < 0 || taskList.Count <= index)
-            {
-                return;
-            }
-            string task = taskList[index];
-            taskList.RemoveAt(index);
-            Console.WriteLine($"Tarea {task} eliminada");
-        }
-
-        Console.WriteLine("Ingrese el número de la tarea a remover: ");
-        ShowTaskList();
-        PrintSeparator();
-
-        string line = Console.ReadLine();
-        if (!int.TryParse(line, out int selectedInt)) return;
-        int indexToRemove = selectedInt - 1;
-
-        RemoveItemFromTaskList(indexToRemove);
-    }
-
-    public static void ShowMenuAdd()
-    {
-        try
-        {
-            Console.WriteLine("Ingrese el nombre de la tarea: ");
-            string task = Console.ReadLine();
-            taskList.Add(task);
-            Console.WriteLine("Tarea registrada");
-        }
-        catch (Exception)
-        {
-        }
-    }
-
-    public static void ShowMenuTaskList()
-    {
-        if (taskList.Count == 0)
-        {
-            Console.WriteLine("No hay tareas por realizar");
-            return;
-        }
-        PrintSeparator();
-        ShowTaskList();
-        PrintSeparator();
-    }
-
-    private static void ShowTaskList()
-    {
-        foreach (var (task, i) in taskList.WithIndex())
-        {
-            Console.WriteLine($"{i + 1}. {task}");
-        }
-    }
-
-    private static void PrintSeparator() => Console.WriteLine("----------------------------------------");
+    return source.Select((item, index) => (item, index));
 }
 
-public enum Menu
+/// <summary>
+/// Show the main menu
+/// </summary>
+/// <returns>Returns wether the user has not chose to exit</returns>
+bool ShowMenuMain()
+{
+    PrintSeparator();
+    Console.WriteLine("Ingrese la opción a realizar: ");
+    Console.WriteLine($"{(int)Menu.Add}. Nueva tarea");
+    Console.WriteLine($"{(int)Menu.Remove}. Remover tarea");
+    Console.WriteLine($"{(int)Menu.TaskList}. Tareas pendientes");
+    Console.WriteLine($"{(int)Menu.Exit}. Salir");
+
+    // Read line
+    Menu selectedOption = (Menu)Convert.ToInt32(Console.ReadLine());
+
+    static bool RunAndTrue(Action func) { func(); return true; }
+    return (selectedOption) switch
+    {
+        (Menu.Add) => RunAndTrue(ShowMenuAdd),
+        (Menu.Remove) => RunAndTrue(ShowMenuRemove),
+        (Menu.TaskList) => RunAndTrue(ShowMenuTaskList),
+        (Menu.Exit) => false,
+        _ => true
+    };
+}
+
+void RemoveItemFromTaskList(int index)
+{
+    if (index < 0 || taskList.Count <= index)
+    {
+        return;
+    }
+    string task = taskList[index];
+    taskList.RemoveAt(index);
+    Console.WriteLine($"Tarea {task} eliminada");
+}
+
+void ShowMenuRemove()
+{
+    Console.WriteLine("Ingrese el número de la tarea a remover: ");
+    ShowTaskList();
+    PrintSeparator();
+
+    string line = Console.ReadLine();
+    if (!int.TryParse(line, out int selectedInt)) return;
+    int indexToRemove = selectedInt - 1;
+
+    RemoveItemFromTaskList(indexToRemove);
+}
+
+void ShowMenuAdd()
+{
+    try
+    {
+        Console.WriteLine("Ingrese el nombre de la tarea: ");
+        string task = Console.ReadLine();
+        taskList.Add(task);
+        Console.WriteLine("Tarea registrada");
+    }
+    catch (Exception)
+    {
+    }
+}
+
+void ShowMenuTaskList()
+{
+    if (taskList.Count == 0)
+    {
+        Console.WriteLine("No hay tareas por realizar");
+        return;
+    }
+    PrintSeparator();
+    ShowTaskList();
+    PrintSeparator();
+}
+
+void ShowTaskList()
+{
+    foreach (var (task, i) in WithIndex(taskList))
+    {
+        Console.WriteLine($"{i + 1}. {task}");
+    }
+}
+
+void PrintSeparator() => Console.WriteLine("----------------------------------------");
+
+enum Menu
 {
     Add = 1,
     Remove = 2,
     TaskList = 3,
     Exit = 4
-}
-
-public static class CustomExtensions
-{
-    public static IEnumerable<(T item, int index)> WithIndex<T>(this IEnumerable<T> source)
-    {
-        return source.Select((item, index) => (item, index));
-    }
 }
